@@ -1,0 +1,19 @@
+﻿@model OnlineToDo.Models.users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ToDo</title>
+</head>
+<body>
+    <div>
+        ToDo
+        <input class="btn btn-lg btn-info btn-block" type="button" value="Log Out" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </div>
+</body>
+</html>

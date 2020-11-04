@@ -1,0 +1,59 @@
+﻿@model IEnumerable<OnlineToDo.Models.notes>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NoteList</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="display4">
+            <h2 class="text-center">Hoşgeldin @User.Identity.Name</h2>
+        </div>
+    </div>
+
+    <div>
+        <p>
+            <input class="btn btn-lg btn-outline-danger btn-block" type="button" value="Log Out" onclick="location.href='@Url.Action("LogOut", "Home")'" />
+            <input class="btn btn-lg btn-outline-success btn-block" type="button" value="Create Notes" onclick="location.href='@Url.Action("Index", "Todo")'" />
+        </p>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th class="">
+                Notes
+            </th>
+            <th class="text-center">
+                User
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td class="text-center text-break">
+                    @Html.DisplayFor(modelItem => item.notes1)
+                </td>
+                <td class="text-right">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <p class="mt-5 mb-3 text-muted">&copy; Oğuzhan Aydınay 2020</p>
+</body>
+</html>

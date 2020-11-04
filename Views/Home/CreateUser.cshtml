@@ -1,0 +1,32 @@
+﻿@model OnlineToDo.Models.users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateUser</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("CreateUser", "Home", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            @ViewBag.CreateHata
+            @Html.TextBoxFor(u => u.userName, new { @class = "form-control", placeholder = "User Name" })
+            @Html.TextBoxFor(u => u.password, new { @class = "form-control", placeholder = "Password", type = "password" })
+            @Html.TextBoxFor(u => u.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", type = "password" })
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" formmethod="post">Sign up</button>
+            <input class="btn btn-lg btn-danger btn-block" type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" />
+            <p class="mt-5 mb-3 text-muted">&copy; Oğuzhan Aydınay 2020</p>
+        }
+    </div>
+</body>
+</html>

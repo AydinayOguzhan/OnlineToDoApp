@@ -1,0 +1,34 @@
+﻿@model OnlineToDo.Models.notes
+@*@model OnlineToDo.Models.users*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="jumbotron jumbotron-fluid">
+            <h3 class="text-center">Add a new note</h3>
+        </div>
+
+        @using (Html.BeginForm("Index", "Todo", FormMethod.Post))
+        {
+            @Html.TextBoxFor(n => n.notes1, new { @class = "form-control", placeholder = "Enter note here" })
+            <br />
+            <button class="btn btn-outline-primary btn-block space" type="submit" formmethod="post">Send</button>
+        }
+        <br />
+        <input class="btn btn-lg btn-info btn-block" type="button" value="Back" onclick="location.href='@Url.Action("NoteList", "Todo")'" />
+
+        <p class="mt-5 mb-3 text-muted">&copy; Oğuzhan Aydınay 2020</p>
+    </div>
+</body>
+</html>
