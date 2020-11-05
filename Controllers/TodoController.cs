@@ -14,7 +14,7 @@ namespace OnlineToDo.Controllers
     [Authorize]
     public class TodoController : Controller
     {
-        todoEntities db = new todoEntities();
+        todoEntities3 db = new todoEntities3();
         public ActionResult Index()
         {
             return View();

@@ -11,7 +11,7 @@ namespace OnlineToDo.Controllers
 {
     public class HomeController : Controller
     {
-        todoEntities db = new todoEntities();
+        todoEntities3 db = new todoEntities3();
 
         public ActionResult Index()
         {
@@ -43,10 +43,26 @@ namespace OnlineToDo.Controllers
         public ActionResult CreateUser(users user)
         {
             notes note = new notes();
+            var controlUser = db.users.FirstOrDefault(x => x.userName == user.userName);
 
             if (!ModelState.IsValid)
             {
                 ViewBag.CreateHata = "Confirm password doesn't match!";
+                return View("CreateUser");
+            }
+            if (user.password == null)
+            {
+                ViewBag.CreateHata = "Password is empty!";
+                return View("CreateUser");
+            }
+            if (user.userName == null)
+            {
+                ViewBag.CreateHata = "User name is empty!";
+                return View("CreateUser");
+            }
+            if (controlUser != null )
+            {
+                ViewBag.CreateHata = "User name is already taken!";
                 return View("CreateUser");
             }
             else

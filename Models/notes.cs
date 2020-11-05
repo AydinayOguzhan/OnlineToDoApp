@@ -17,7 +17,5 @@ namespace OnlineToDo.Models
         public int id { get; set; }
         public string username { get; set; }
         public string notes1 { get; set; }
-    
-        public virtual users users { get; set; }
     }
 }

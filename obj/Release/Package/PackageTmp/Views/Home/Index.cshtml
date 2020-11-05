@@ -1,0 +1,38 @@
+﻿@model OnlineToDo.Models.users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <title>ToDo Login</title>
+</head>
+<body>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-signin" }))
+    {
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        @ViewBag.HataMesaj
+        @*<label for="inputEmail" class="sr-only">Email address</label>*@
+        @Html.TextBoxFor(u => u.userName, new { @class = "form-control", placeholder = "User Name", autofocus="autofocus"})
+        @*<label for="inputPassword" class="sr-only">Password</label>*@
+        @Html.TextBoxFor(u => u.password, new { @class = "form-control", placeholder = "Password", type = "password" })
+        @*<div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>*@
+        <button class="btn btn-lg btn-primary btn-block" type="submit" formmethod="post">Sign in</button>
+        <input class="btn btn-lg btn-info btn-block" type="button" value="Sign up" onclick="location.href='@Url.Action("CreateUser", "Home")'" />
+        <p class="mt-5 mb-3 text-muted">&copy; Oğuzhan Aydınay 2020</p>
+    }
+
+
+</body>
+</html>

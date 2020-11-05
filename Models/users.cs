@@ -15,20 +15,11 @@ namespace OnlineToDo.Models
 
     public partial class users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public users()
-        {
-            this.notes = new HashSet<notes>();
-        }
-    
         public int id { get; set; }
         public string userName { get; set; }
         public string password { get; set; }
-    
-        [Compare("password", ErrorMessage = "Compare password doesn't match the password")]
-        public string ConfirmPassword { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<notes> notes { get; set; }
+        [Compare("password", ErrorMessage = "Confirm password and password doesn't match!")]
+        public string ConfirmPassword { get; set; }
     }
 }
